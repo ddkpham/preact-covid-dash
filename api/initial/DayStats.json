@@ -1,0 +1,49 @@
+{
+  "date": "2014-01-22T14:56:59.301Z",
+  "country": "canada",
+  "confirmed": 10,
+  "active": 6,
+  "deaths": 2,
+  "recovered": 2
+}
+{
+  "date": "2014-01-23T14:56:59.301Z",
+  "country": "canada",
+  "confirmed": 15,
+  "active": 8,
+  "deaths": 2,
+  "recovered": 5
+}
+{
+  "date": "2014-01-24T14:56:59.301Z",
+  "country": "canada",
+  "confirmed": 20,
+  "active": 10,
+  "deaths": 4,
+  "recovered": 6
+}
+
+{
+  "date": "2014-01-22T14:56:59.301Z",
+  "country": "peru",
+  "confirmed": 100,
+  "active": 60,
+  "deaths": 20,
+  "recovered": 20
+}
+{
+  "date": "2014-01-23T14:56:59.301Z",
+  "country": "peru",
+  "confirmed": 150,
+  "active": 80,
+  "deaths": 20,
+  "recovered": 50
+}
+{
+  "date": "2014-01-24T14:56:59.301Z",
+  "country": "peru",
+  "confirmed": 200,
+  "active": 100,
+  "deaths": 40,
+  "recovered": 60
+}

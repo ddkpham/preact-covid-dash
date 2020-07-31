@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { h, Component } from "preact";
+import { useState } from "preact/compat";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -23,10 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuAppBar() {
+export default function MenuAppBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const { goToHomePage: homePage } = props;
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,6 +36,10 @@ export default function MenuAppBar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const goToHomePage = () => {
+    homePage();
   };
 
   return (
@@ -45,6 +51,7 @@ export default function MenuAppBar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            onClick={goToHomePage}
           >
             <MenuIcon />
           </IconButton>

@@ -1,4 +1,5 @@
 import React from "react";
+import { h } from "preact";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -30,10 +31,10 @@ export default function MediaCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Covid Dash Board
+            Covid Dashboard
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            What the really needs right now. Another amateur covid dash board to
+            What the really needs right now. Another amateur covid dashboard to
             add to the noise of Covid stats.
           </Typography>
         </CardContent>

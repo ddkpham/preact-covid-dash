@@ -1,0 +1,2 @@
+CLOUD: mongodb+srv://david:fionaroome@covid-19-cluster-jeba4.mongodb.net/stats?retryWrites=true&w=majority
+LOCAL: mongodb://localhost/mongo-proj
