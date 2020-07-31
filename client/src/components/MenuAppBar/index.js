@@ -56,7 +56,7 @@ export default function MenuAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Covid-Dashboard
+            Covid Dashboard
           </Typography>
 
           <div>

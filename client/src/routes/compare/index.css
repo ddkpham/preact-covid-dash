@@ -1,0 +1,20 @@
+.compare-countrySelector {
+  width: 300px;
+  margin-top: 100px;
+  margin-left: 200px;
+}
+
+.compare-resultsContainer {
+  width: 50%;
+  display: inline-block;
+}
+
+.compare-outerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.compare-statisticsContainer {
+  background: #673ab7;
+}

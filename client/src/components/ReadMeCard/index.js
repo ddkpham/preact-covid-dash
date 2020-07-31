@@ -34,19 +34,11 @@ export default function MediaCard() {
             Covid Dashboard
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            What the really needs right now. Another amateur covid dashboard to
-            add to the noise of Covid stats.
+            What the world really needs right now. Another amateur Covid
+            dashboard to add to the noise of Covid stats.
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
     </Card>
   );
 }

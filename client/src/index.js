@@ -2,57 +2,34 @@ import React from "react";
 import { h, render } from "preact";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-import AppBar from "./components/MenuAppBar";
-import ReadMeCard from "./components/ReadMeCard";
-import Chart from "./components/Chart";
-import CountryDropDown from "./components/CountryDropDown";
-import DisplayStats from "./components/DisplayStats/DisplayStats";
+
+import { Router } from 'preact-router';
+
+import Header from './components/Header';
+
+import Home from '../src/routes/home';
+import Compare from '../src/routes/compare';
 
 class App extends React.Component {
-  state = {
-    globalStats: {},
-    countries: [],
-    selectedCountry: "",
-    countrySelected: false,
-  };
+	/** Gets fired when the route changes.
+	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
+	 *	@param {string} event.url	The newly routed URL
+	 */
+	handleRoute = e => {
+		this.currentUrl = e.url;
+	};
 
-  changeCountry = (country) => {
-    console.log("App -> changeCountry -> country", country);
-    this.setState({ countrySelected: false });
-    this.setState({ selectedCountry: country });
-    this.setState({ countrySelected: true });
-  };
-
-  goToHomePage = () => {
-    this.setState({ countrySelected: false });
-  };
-
-  async componentDidMount() {
-    const url = "https://api.covid19api.com/summary";
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({ globalStats: data.Global, countries: data.Countries });
-  }
-
-  render({}, { countrySelected, globalStats, selectedCountry, countries }) {
-    return (
-      <div className="statistics">
-        <AppBar goToHomePage={this.goToHomePage} />
-        <div className="read-me">
-          <CountryDropDown changeCountry={this.changeCountry} />
-          {countrySelected ? null : <ReadMeCard />}
-        </div>
-        {countrySelected ? <Chart country={selectedCountry} /> : null}
-        {countrySelected ? (
-          <DisplayStats
-            selectedCountry={selectedCountry}
-            globalStats={globalStats}
-            countries={countries}
-          />
-        ) : null}
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+        <Header />
+				<Router onChange={this.handleRoute}>
+					<Home path="/" />
+          <Compare path="/compare/" />
+				</Router>
+			</div>
+		);
+	}
 }
 
 render(

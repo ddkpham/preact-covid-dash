@@ -1,9 +1,10 @@
 import React from "react";
+import { h, Component } from "preact";
 import { Line as LineChart } from "react-chartjs-2";
 import { options, styles, startingData } from "./data";
 import NoDataCard from "./NoDataCard";
 
-class LineChartExample extends React.Component {
+class LineChartExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -85,8 +86,7 @@ class LineChartExample extends React.Component {
     return newData;
   }
 
-  render() {
-    const { data } = this.state;
+  render({}, { data }) {
     const containsChartData = data.labels.length >= 1;
     return (
       <div style={styles.graphContainer}>

@@ -2,8 +2,9 @@ import React from "react";
 import { h } from "preact";
 import { Card } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import GlobalStats from "../GlobalStats/GlobalStats";
+import GlobalStats from "../GlobalStats";
 import Countries from "../Countries/Countries";
+import "./style.css";
 
 const search = (value, array) => {
   value = value.toUpperCase().replace(/\s+/g, "");
@@ -34,10 +35,12 @@ const DisplayStats = (props) => {
     return <div></div>;
   } else {
     return (
-      <Card className={classes.root}>
-        <GlobalStats stats={globalStats} />
-        <Countries countryStats={countryStats} />
-      </Card>
+      <div className="card">
+        <Card className={classes.root}>
+          <GlobalStats stats={globalStats} />
+          <Countries countryStats={countryStats} />
+        </Card>
+      </div>
     );
   }
 };

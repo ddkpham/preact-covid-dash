@@ -9,7 +9,7 @@ class CountryDropDown extends Component {
     options: [],
   };
   async componentDidMount() {
-    const url = "https://api.covid19api.com/countries";
+    const url = "http://localhost:3000/api/options";
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ options: data.data });
