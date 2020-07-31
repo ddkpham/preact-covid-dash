@@ -3,6 +3,7 @@ import { h, Component } from "preact";
 import { Line as LineChart } from "react-chartjs-2";
 import { options, styles, startingData } from "./data";
 import NoDataCard from "./NoDataCard";
+import { baseURL } from "../../config/url";
 
 class LineChartExample extends Component {
   constructor(props) {
@@ -29,10 +30,12 @@ class LineChartExample extends Component {
 
   updateContryDataSets = async () => {
     const { country } = this.props;
-    const url = `http://localhost:3000/api/stats/${country}`;
+    const url = `${baseURL}/total/dayone/country/${country}`;
     const response = await fetch(url);
+    console.log("LineChartExample -> updateContryDataSets -> url", url);
     const data = await response.json();
-    const newData = this.generateDataSets(data.data);
+    console.log("LineChartExample -> updateContryDataSets -> data", data);
+    const newData = this.generateDataSets(data);
     this.setState({ data: newData });
   };
 
@@ -40,22 +43,23 @@ class LineChartExample extends Component {
     const {
       data: { datasets },
     } = this.state;
+
     const activeCasesData = data.map((record) => {
-      return record.active;
+      return record.Active;
     });
     const confirmedCasesData = data.map((record) => {
-      return record.confirmed;
+      return record.Confirmed;
     });
 
     const deathsData = data.map((record) => {
-      return record.deaths;
+      return record.Deaths;
     });
     const recoveredCasesData = data.map((record) => {
-      return record.recovered;
+      return record.Recovered;
     });
 
     const newLabels = data.map((record) => {
-      const strippedDate = record.date.split("T")[0];
+      const strippedDate = record.Date.split("T")[0];
       return strippedDate;
     });
 

@@ -3,16 +3,17 @@ import React from "react";
 import { h, Component } from "preact";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { baseURL } from "../../config/url";
 
 class CountryDropDown extends Component {
   state = {
     options: [],
   };
   async componentDidMount() {
-    const url = "http://localhost:3000/api/options";
+    const url = `${baseURL}/countries`;
     const response = await fetch(url);
     const data = await response.json();
-    this.setState({ options: data.data });
+    this.setState({ options: data });
   }
 
   setCountry = (value) => {

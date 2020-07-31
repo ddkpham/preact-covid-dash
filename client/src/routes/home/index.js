@@ -6,6 +6,7 @@ import ReadMeCard from "../../components/ReadMeCard";
 import Chart from "../../components/Chart";
 import CountryDropDown from "../../components/CountryDropDown";
 import DisplayStats from "../../components/DisplayStats/DisplayStats";
+import { baseURL } from "../../config/url";
 
 export default class Home extends Component {
   state = {
@@ -27,9 +28,10 @@ export default class Home extends Component {
   };
 
   async componentDidMount() {
-    const url = "https://api.covid19api.com/summary";
+    const url = `${baseURL}summary`;
     const response = await fetch(url);
     const data = await response.json();
+    console.log("Home -> componentDidMount -> data", data);
     this.setState({ globalStats: data.Global, countries: data.Countries });
   }
 
