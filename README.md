@@ -1,5 +1,7 @@
 # Covid Dashboard built using Preact, Node, and ExpressJS
 
+Live URL: https://ddkpham.github.io/preact-covid-dash/
+
 ### To run application, must have docker.
 
 ### Step 1.
