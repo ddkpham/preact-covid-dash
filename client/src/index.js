@@ -24,7 +24,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <Router onChange={this.handleRoute}>
           <Home path="/" />
           <Compare path="/compare/" />

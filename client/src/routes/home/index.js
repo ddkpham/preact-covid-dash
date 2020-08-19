@@ -38,7 +38,7 @@ export default class Home extends Component {
   render({}, { countrySelected, globalStats, selectedCountry, countries }) {
     return (
       <div className="outerContainer">
-        {/* <AppBar goToHomePage={this.goToHomePage} /> */}
+        <AppBar goToHomePage={this.goToHomePage} />
         <div className="read-me">
           <CountryDropDown changeCountry={this.changeCountry} />
           {countrySelected ? null : <ReadMeCard />}
