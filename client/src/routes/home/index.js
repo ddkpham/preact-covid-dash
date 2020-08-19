@@ -7,6 +7,7 @@ import Chart from "../../components/Chart";
 import CountryDropDown from "../../components/CountryDropDown";
 import DisplayStats from "../../components/DisplayStats/DisplayStats";
 import { baseURL } from "../../config/url";
+import RightPanel from "../../components/RightPanel";
 
 export default class Home extends Component {
   state = {
@@ -39,6 +40,9 @@ export default class Home extends Component {
     return (
       <div className="outerContainer">
         <AppBar goToHomePage={this.goToHomePage} />
+        <div className="home-side-panel">
+          <RightPanel />
+        </div>
         <div className="read-me">
           <CountryDropDown changeCountry={this.changeCountry} />
           {countrySelected ? null : <ReadMeCard />}

@@ -10,6 +10,7 @@ const colours = {
   teal: "#197278",
   mint: "#9DF7E5",
   red: red[600],
+  white: "#FFF",
 };
 
 const theme = createMuiTheme({
@@ -19,6 +20,7 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: colours.bronze,
+      light: colours.white,
     },
     text: {
       primary: colours.eerie_black,
