@@ -44,8 +44,25 @@ class LineChartExample extends Component {
       data: { datasets },
     } = this.state;
 
-    const activeCasesData = data.map((record) => {
+    var activeCasesData = data.map((record) => {
       return record.Active;
+    });
+
+    const possibleOutlierRatio = 1.5;
+    activeCasesData = activeCasesData.map((rec, index) => {
+      if (index && index != activeCasesData.length - 1) {
+        // not first or last value
+        // toss outlier values that may be a bug in the API
+        const prevDayCases = activeCasesData[index - 1];
+        const currCases = rec;
+        if (currCases / prevDayCases > possibleOutlierRatio) {
+          return prevDayCases;
+        } else {
+          return currCases;
+        }
+      } else {
+        return rec;
+      }
     });
     const confirmedCasesData = data.map((record) => {
       return record.Confirmed;
@@ -54,9 +71,27 @@ class LineChartExample extends Component {
     const deathsData = data.map((record) => {
       return record.Deaths;
     });
-    const recoveredCasesData = data.map((record) => {
+    var recoveredCasesData = data.map((record) => {
       return record.Recovered;
     });
+
+    var nonZeroIndex = 0;
+    recoveredCasesData = recoveredCasesData.map((rec, index) => {
+      if (index < 4) {
+        console.log("LineChartExample -> generateDataSets -> rec", rec);
+      }
+      if (rec) {
+        nonZeroIndex = index;
+        return rec;
+      } else {
+        return index == 0 ? rec : recoveredCasesData[nonZeroIndex];
+      }
+    });
+
+    console.log(
+      "LineChartExample -> generateDataSets -> recoveredCasesData",
+      recoveredCasesData
+    );
 
     const newLabels = data.map((record) => {
       const strippedDate = record.Date.split("T")[0];

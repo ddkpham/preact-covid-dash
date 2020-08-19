@@ -3,38 +3,42 @@ import { h, render } from "preact";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
-import { Router } from 'preact-router';
+import { Router } from "preact-router";
+import { ThemeProvider } from "@material-ui/core/styles";
 
-import Header from './components/Header';
+import Header from "./components/Header";
 
-import Home from '../src/routes/home';
-import Compare from '../src/routes/compare';
+import Home from "../src/routes/home";
+import Compare from "../src/routes/compare";
+import theme from "../src/styles/theme";
 
 class App extends React.Component {
-	/** Gets fired when the route changes.
-	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
-	 *	@param {string} event.url	The newly routed URL
-	 */
-	handleRoute = e => {
-		this.currentUrl = e.url;
-	};
+  /** Gets fired when the route changes.
+   *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
+   *	@param {string} event.url	The newly routed URL
+   */
+  handleRoute = (e) => {
+    this.currentUrl = e.url;
+  };
 
-	render() {
-		return (
-			<div>
+  render() {
+    return (
+      <div>
         <Header />
-				<Router onChange={this.handleRoute}>
-					<Home path="/" />
+        <Router onChange={this.handleRoute}>
+          <Home path="/" />
           <Compare path="/compare/" />
-				</Router>
-			</div>
-		);
-	}
+        </Router>
+      </div>
+    );
+  }
 }
 
 render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.querySelector("#root")
 );
